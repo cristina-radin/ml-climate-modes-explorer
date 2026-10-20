@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use the results shown in this viewer, please cite the article below."
+title: "Subsurface Climate Modes: interactive viewer"
+type: software
+authors:
+  - family-names: Radin
+    given-names: Cristina
+license: MIT
+repository-code: "https://github.com/cristina-radin/ml-climate-modes-explorer"
+preferred-citation:
+  type: article
+  title: "Unveiling Regional Climate Patterns Through Global Subsurface Ocean Temperature Data: An AI Multi-Layer Analysis Framework"
+  authors:
+    - family-names: Radin
+      given-names: C.
+    - family-names: Nieves
+      given-names: V.
+  journal: "Earth Systems and Environment"
+  volume: 8
+  start: 1673
+  end: 1681
+  year: 2024
+  doi: "10.1007/s41748-024-00409-w"

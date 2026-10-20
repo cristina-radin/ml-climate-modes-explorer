@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subsurface Climate Modes</title>
+<meta name="description" content="Interactive viewer of regional ocean climate variability modes in three depth layers and their link to sea level, based on Radin & Nieves (2024).">
+<meta name="theme-color" content="#fafcfe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the map</a>
+<div class="sheet">
+  <header class="title">
+    <h1>Subsurface Climate Modes</h1>
+    <p>Regions of coherent temperature variability in three ocean layers, 1955 to 2022, found with K-means clustering. For each region, the leading principal component (PC1) is set against satellite sea level.</p>
+  </header>
+
+  <main id="main">
+
+    <div class="stage">
+    <aside class="rail">
+      <div class="ruler" role="group" aria-label="Ocean layer">
+        <p class="rail-label">Ocean layer</p>
+        <div class="column">
+          <div class="depths" aria-hidden="true"><span style="top:0">0 m</span><span style="top:98px">100 m</span><span style="top:100%">700 m</span></div>
+          <div class="layers">
+            <button class="layer" data-i="0" id="layer-STA" aria-pressed="false"><b>Surface</b><small>Anomaly · STA</small></button>
+            <button class="layer" data-i="1" id="layer-MTA" aria-pressed="true"><b>Upper 100 m</b><small>Mean anomaly · MTA</small></button>
+            <button class="layer" data-i="2" id="layer-OHC" aria-pressed="false"><b>Upper 700 m</b><small>Heat content · OHC</small></button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section class="mapblock" aria-labelledby="maptitle">
+      <h2 id="maptitle" style="position:absolute;left:-9999px">Cluster Map</h2>
+      <div class="mapframe" id="mapframe">
+        <canvas id="map" tabindex="0" role="img" aria-label="Map of the 22 ocean clusters. Drag or use the arrow keys to move, plus and minus to zoom. Pick a region from the register below to see its time series."></canvas>
+        <div class="zoom" role="group" aria-label="Map zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zreset" aria-label="Show the whole ocean">⤢</button></div>
+      </div>
+            <div class="mapfoot">
+        <span><span id="mapcaption"></span> · <span id="zoomlevel">Whole ocean</span></span>
+        <span class="readout" id="readout" aria-live="polite">Drag to move, scroll or pinch to zoom.</span>
+      </div>
+    </section>
+    </div>
+
+    <div class="lower">
+      <section class="register" aria-labelledby="regtitle">
+        <h2 id="regtitle">Regions</h2>
+        <div>
+          <div class="reg-head" aria-hidden="true"><span>Region</span><span>r reg.</span><span>r coast</span></div>
+          <div class="reg-list" id="reglist"></div>
+        </div>
+        <p class="reg-note" id="regnote"></p>
+      </section>
+
+      <section class="compare" aria-labelledby="ctitle">
+        <div class="compare-head">
+          <div>
+            <p class="kicker" id="ckicker"></p>
+            <h2 id="ctitle">Sea Level Comparison</h2>
+          </div>
+          <div class="span-toggle" role="group" aria-label="Period shown">
+            <button data-p="alt" id="p-alt" aria-pressed="true">1993–2022</button>
+            <button data-p="full" id="p-full" aria-pressed="false">1955–2022</button>
+          </div>
+        </div>
+        <div class="figures" id="figures"></div>
+        <div class="legend">
+          <span><i style="border-color:var(--pc)"></i>PC1, layer temperature</span>
+          <span><i style="border-color:var(--rsl)"></i>Regional sea level</span>
+          <span><i style="border-color:var(--csl)"></i>Coastal sea level</span>
+        </div>
+        <div class="chart" id="chart"></div>
+        <p class="method">Each series is standardized over the period shown. A principal component has no fixed sign, so PC1 is flipped where needed to match regional sea level. Altimetry starts in 1993.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="ref">
+      <b>Scientific reference</b>
+      <p>This interactive viewer presents visualizations of results published in:</p>
+      <p>Radin, C., &amp; Nieves, V. (2024). Unveiling Regional Climate Patterns Through Global Subsurface Ocean Temperature Data: An AI Multi-Layer Analysis Framework. <i>Earth Systems and Environment</i>, 8, 1673–1681. <a href="https://doi.org/10.1007/s41748-024-00409-w" target="_blank" rel="noopener">https://doi.org/10.1007/s41748-024-00409-w</a></p>
+      <p>The original article is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+      <p>Interactive visualizations developed by Cristina Radin. The visualizations may adapt the presentation of the published results; please refer to the original article for the scientific methodology and interpretation.</p>
+    </div>
+    <div class="side">
+      <p><b>Data</b>Cluster maps from the openly released <a href="https://github.com/AI4OCEANS/Regional-Climate-Patterns" target="_blank" rel="noopener">Regional-Climate-Patterns</a> dataset. Inputs: NOAA World Ocean Atlas 2023 temperature estimates, Copernicus Marine multi-satellite sea level, NOAA PSL climate indices. Coastlines: Natural Earth.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="data/coastline.js"></script>
+<script src="data/regions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
