@@ -41,6 +41,11 @@ scripts/build_coastline.mjs  builds data/coastline.js
 
 The viewer is static and needs no server or build step. Open `index.html` in a browser, or publish the repository with GitHub Pages (Settings, Pages, deploy from the `main` branch, root folder).
 
+## Contact
+
+Cristina Radin  
+cradin@mpi-bremen.de
+
 ## Licence
 
 The source code of the viewer (`index.html`, `styles.css`, `app.js` and `scripts/`) is released under the MIT licence, see [LICENSE](LICENSE). The licence covers the code only. The scientific results and data shown keep the terms of their original sources listed above.
