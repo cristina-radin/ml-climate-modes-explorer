@@ -20,13 +20,6 @@ The original article is licensed under [Creative Commons Attribution 4.0 Interna
 
 Interactive visualizations developed by Cristina Radin. The visualizations may adapt the presentation of the published results; please refer to the original article for the scientific methodology and interpretation.
 
-## Data
-
-- **Cluster maps:** openly released [Regional-Climate-Patterns](https://github.com/AI4OCEANS/Regional-Climate-Patterns) dataset.
-- **Regional PC1 and sea level series:** results of the article above.
-- **Inputs of the original analysis:** NOAA World Ocean Atlas 2023 temperature estimates, Copernicus Marine multi-satellite sea level and NOAA PSL climate indices.
-- **Coastlines:** [Natural Earth](https://www.naturalearthdata.com/) (public domain), via [world-atlas](https://github.com/topojson/world-atlas).
-
 ## Repository layout
 
 ```
